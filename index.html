@@ -1,0 +1,54 @@
+!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portail — Panneau de contrôle</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:#f3f5f8;color:#263445;font-family:Arial,Helvetica,sans-serif}
+header{height:66px;background:#24364b;color:#fff;display:flex;align-items:center;padding:0 36px;border-bottom:3px solid #f28b36}
+.brand{font-size:21px;font-weight:700;letter-spacing:-.5px}.brand span{color:#ffa252}
+main{max-width:1060px;margin:52px auto;padding:0 24px}
+h1{font-size:23px;font-weight:500;margin:0 0 24px}
+.panel{background:#fff;border:1px solid #dce2e9;border-radius:5px;overflow:hidden;box-shadow:0 2px 5px #14273e05}
+h2{font-size:14px;font-weight:600;background:#fafbfc;border-bottom:1px solid #e5e9ef;margin:0;padding:17px 22px}
+.scroll{overflow-x:auto;padding:30px 24px}
+.apps{display:grid;grid-template-columns:repeat(3,minmax(180px,1fr));min-width:580px;gap:20px}
+.app{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:17px;min-height:156px;padding:24px 14px;border:1px solid transparent;border-radius:5px;text-decoration:none;color:#334b65;transition:background .15s,border-color .15s}
+.app:hover{background:#f4f8fc;border-color:#d8e4f0}
+.app:focus-visible{outline:3px solid #2669ad;outline-offset:-3px}
+.icon{display:grid;place-items:center;width:64px;height:64px;border-radius:16px;background:var(--bg);color:var(--color)}
+.icon svg{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.label{font-size:15px;font-weight:600}
+.site{--bg:#eaf3ff;--color:#3478ba}.admin{--bg:#fff1e5;--color:#c8732a}.registry{--bg:#eaf5f0;--color:#368463}
+@media(max-width:600px){header{padding:0 24px}main{margin:32px auto;padding:0 16px}.scroll{padding:20px 12px}.apps{gap:8px;min-width:556px}}
+@media(prefers-reduced-motion:reduce){.app{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="brand">Portail<span>.</span></div></header>
+<main>
+<h1>Panneau de contrôle</h1>
+<section class="panel" aria-labelledby="apps-title">
+<h2 id="apps-title">Applications</h2>
+<!-- Les noms Docker doivent être résolus et accessibles depuis le navigateur.
+     Le DNS du bridge n’est pas automatiquement accessible à un poste externe. -->
+<div class="scroll"><nav class="apps" aria-label="Applications du laboratoire">
+<a class="app site" href="http://wordpress:80/">
+<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6 6.5h.01M9 6.5h.01M7 13h10M7 16h6"/></svg></span>
+<span class="label">Page vitrine</span>
+</a>
+<a class="app admin" href="http://phpmyadmin:80/">
+<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M3 10h6M13 9h4M13 13h4M13 17h2"/></svg></span>
+<span class="label">Administration</span>
+</a>
+<a class="app registry" href="http://registry:5000/v2/">
+<span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5ZM3 8v9l9 5 9-5V8M12 13v9M7.5 5.5l9 5"/></svg></span>
+<span class="label">Registry</span>
+</a>
+</nav></div>
+</section>
+</main>
+</body>
+</html>
